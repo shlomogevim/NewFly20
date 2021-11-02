@@ -1,0 +1,61 @@
+
+material {
+    name: "Custom material",
+    parameters: [
+        {
+            type: "sampler2d",
+            name: "andyColor"
+        },
+        {
+            type: "sampler2d",
+            name: "metal"
+        },
+         {
+            type: "sampler2d",
+            name: "andyRoughness"
+          },
+         {
+            type: "sampler2d",
+            name: "andyEmissive"
+         },
+         {
+            type: "sampler2d",
+            name: "andyNormal"
+         }
+,
+         {
+            type: "sampler2d",
+            name: "andyAlpha"
+         }
+    ],
+    requires: [
+        "position",
+        "uv0"
+    ],
+    shadingModel: "lit",
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+
+        float3 texSample = texture(materialParams_andyColor, getUV0()).rgb;
+         material.baseColor.rgb = texSample;
+
+          float metal =  texture(materialParams_metal, getUV0()).r;
+          material.metallic = metal;
+
+          float ro =  texture(materialParams_andyRoughness, getUV0()).r;
+          material.roughness = ro;
+
+          float4 em =  texture(materialParams_andyEmissive, getUV0());
+          material.emissive = em;
+
+         vec3 norm =  texture(materialParams_andyNormal, getUV0()).xyz;
+         material.normal = norm;
+
+
+    }
+}
+
+

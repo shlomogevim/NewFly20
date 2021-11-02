@@ -1,0 +1,67 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/model201/Sar-Fish.fbx',
+    },
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/model201/Sar-Fish.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.001',
+      parameters: [
+        {
+          andyColor: 'SAR texture',
+        },
+      ],
+      source: 'sampledata/general/custom_material.mat',
+    },
+    {
+      name: 'Material.002',
+      parameters: [
+        {
+          andyColor: 'eye sar',
+        },
+      ],
+      source: 'sampledata/general/custom_material.mat',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/model201/Sar-Fish.fbx',
+    name: 'Sar-Fish',
+    recenter: 'root',
+    scale: 0.23650299999999999,
+ },
+      samplers: [
+           {
+                  file: 'sampledata/model201/textures/eye sar.png',
+                  name: 'eye sar',
+                },
+      {
+                  file: 'sampledata/model201/textures/SAR texture.png',
+                  name: 'SAR texture',
+                },
+
+              ],
+   version: '0.54:2',
+ }
+
