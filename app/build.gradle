@@ -5,21 +5,113 @@ plugins {
     id 'com.google.ar.sceneform.plugin'
 }
 
-        sceneform.asset(                                 // model-201
+  /*      sceneform.asset(                                 // model-201
         'sampledata/model201/Sar-Fish.fbx',
         'sampledata/general/custom_material.mat',
         'sampledata/model201/Sar-Fish.sfa',
         'src/main/res/raw/fish',
         ['sampledata/model201/Sar-Fish.fbx']
-)
 
-/*sceneform.asset(                                                //dogma2
-        'sampledata/model2/Rumba Dancing aus C4D R23.fbx',
-        'default',
-        'sampledata/model2/Rumba Dancing aus C4D R23.sfa',
-        'src/main/res/raw/rumba2',
-        ['sampledata/model2/Rumba Dancing aus C4D R23.fbx']
 )*/
+
+
+/*sceneform.asset(                                 // model-202
+        'sampledata/model202/TEST2.fbx',
+       'default',
+     // 'sampledata/general/custom_material.mat',
+        'sampledata/model202/TEST2.sfa',
+        'src/main/res/raw/book',
+        ['sampledata/model202/TEST2.fbx']
+)*/
+
+/*
+sceneform.asset(                                 // model-203
+        'sampledata/model203/2557eaffc6624bbe92ac201f9ba4953d.fbx.fbx',
+        'default',
+        // 'sampledata/general/custom_material.mat',
+        'sampledata/model203/2557eaffc6624bbe92ac201f9ba4953d.fbx.sfa',
+        'src/main/res/raw/wolf',
+        ['sampledata/model203/2557eaffc6624bbe92ac201f9ba4953d.fbx.fbx']
+)
+*/
+
+/*sceneform.asset(                                 // model-204
+        'sampledata/model204/Mei_Run.fbx',
+        'default',
+        // 'sampledata/general/custom_material.mat',
+        'sampledata/model204/Mei_Run.sfa',
+        'src/main/res/raw/mei_run',
+        ['sampledata/model204/Mei_Run.fbx']
+)*/
+
+/*sceneform.asset(                                 // model-205
+        'sampledata/model205/Entry.fbx',
+        'default',
+        // 'sampledata/general/custom_material.mat',
+        'sampledata/model205/Entry.sfa',
+        'src/main/res/raw/entry',
+        ['sampledata/model205/Entry.fbx']
+)*/
+
+/*sceneform.asset(                                 // model-205A
+        'sampledata/model205A/Samba Dancing.fbx',
+        'default',
+        // 'sampledata/general/custom_material.mat',
+        'sampledata/model205A/Samba Dancing.sfa',
+        'src/main/res/raw/samba',
+        ['sampledata/model205/Samba Dancing.fbx']
+)*/
+
+/*sceneform.asset(                                 // model-205B
+        'sampledata/model205B/Hip Hop Dancing.fbx',
+        'default',
+        'sampledata/model205B/Hip Hop Dancing.sfa',
+        'src/main/res/raw/hip_hop_dancing',
+        ['sampledata/model205B/Hip Hop Dancing.fbx']
+)*/
+
+/*sceneform.asset(                                 // model-205C
+        'sampledata/model205C/Swing Dancing.fbx',
+        'default',
+        'sampledata/model205C/Swing Dancing.sfa',
+        'src/main/res/raw/swing_dancing',
+        ['sampledata/model205C/Swing Dancing.fbx']
+)*/
+
+/*sceneform.asset(                                 // model-206
+        'sampledata/model206/Wave Hip Hop Dance (1).fbx',
+      //  'default',
+        'sampledata/general/custom_material.mat',
+        'sampledata/model206/Wave Hip Hop Dance (1).sfa',
+        'src/main/res/raw/dancer_girl',
+        ['sampledata/model206/Wave Hip Hop Dance (1).fbx']
+)*/
+/*sceneform.asset(                                 // model-207
+        'sampledata/model207/Guppie_Animated.fbx',
+        // 'default',
+       'sampledata/general/custom_material_para1.mat',
+        'sampledata/model207/Guppie_Animated.sfa',
+        'src/main/res/raw/guppie207',
+        ['sampledata/model207/Guppie_Animated.fbx']
+)*/
+
+/*sceneform.asset(                                 // model-208
+        'sampledata/model208/BroadtailMoorSF.fbx',
+        // 'default',
+        'sampledata/general/custom_material_para1.mat',
+        'sampledata/model208/BroadtailMoorSF.sfa',
+        'src/main/res/raw/broadtailmoor',
+        ['sampledata/model208/BroadtailMoorSF.fbx']
+)*/
+
+sceneform.asset(                                 // model-209
+        'sampledata/model209/Mr_Man_Walking.fbx',
+        // 'default',
+        'sampledata/general/custom_material_para1.mat',
+        'sampledata/model209/Mr_Man_Walking.sfa',
+        'src/main/res/raw/mrmanwalking',
+        ['sampledata/model209/Mr_Man_Walking.fbx']
+)
 
 android {
     compileSdk 31
@@ -56,7 +148,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
-    implementation 'com.google.ar:core:1.27.0'
+    implementation 'com.google.ar:core:1.28.0'
     implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.17.1'
     implementation 'com.google.ar.sceneform:core:1.17.1'
 
