@@ -23,94 +23,57 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.CompletableFuture
 
 class MainActivity : AppCompatActivity() {
-    lateinit var arFragment: ArFragment
 
-   /* private val model = Models.Fish               //model-201
-    private val modelResourceId = R.raw.fish
-    val animationString = "Armature|ArmatureAction"
-     private var modelScale = 0.2f*/
+   val rotatePosition = false
+   // val rotatePosition = true
 
-    /*private val model = Models.Book             //model-202
-    private val modelResourceId = R.raw.book
-    val animationString = "TEST2"
-    private var modelScale = 0.03f*/
+   // private val model = Models1.Fish               //model-201
 
-   /* private val model = Models.Wolf             //model-203
-    private val modelResourceId = R.raw.wolf
-    val animationString = "01_Run"
-    private var modelScale = 3f*/
+   // private val model = Models1.Book           //model-202
 
-   /* private val model = Models.Mei_Run             //model-204
-    private val modelResourceId = R.raw.mei_run
-    val animationString = "Mei_Run"
-    private var modelScale = 3f*/
+   // private val model = Models1.Happy_Baby       //model-203
 
-   /* private val model = Models.BorisEntery        //model-205
-    private val modelResourceId = R.raw.entry
-    val animationString = "mixamo.com"
-    private val modelScale = 3f
-    private val startAngle=180f*/
+   //  private val model = Models1.Leopard_Run        //model-204
 
-   /* private val model = Models.BorisSammba       //model-205A
-    private val modelResourceId = R.raw.samba
-    val animationString = "mixamo.com"
-    private val modelScale = 3f
-    private val startAngle=180f*/
+  //   private val model = Models1.Borise_Entry        //model-205
 
-   /* private val model = Models.BorisHipHop          //model-205B
-    private val modelResourceId = R.raw.hip_hop_dancing
-    val animationString = "mixamo.com"
-    private val modelScale = 3f
-    private val startAngle=180f*/
+  //  private val model = Models1.Borise_Samba       //model-205A
 
-   /* private val model = Models.BorisSwing            //model-205C
-    private val modelResourceId = R.raw.swing_dancing
-    val animationString = "mixamo.com"
-    private val modelScale = 3f
-    private val startAngle=180f*/
+   // private val model = Models1.Borise_HipHop         //model-205B
 
-   /* private val model = Models.DancerGirl            //model-206
-    private val modelResourceId = R.raw.dancer_girl
-    val animationString = "mixamo.com"
-    private val modelScale = 0.1f
-    private val startAngle=180f
-*/
+   // private val model = Models1.Borise_Swing           //model-205C
 
-   /* private val model = Models.Guppie           //model-207
-    private val modelResourceId = R.raw.guppie207
-    val animationString = "Guppie_Animated"
-    private val modelScale = 0.1f
-    private val startAngle=90f*/
+  //  private val model = Models1.DanceGirl           //model-206
 
-    /*private val model = Models1.Broaddtail           //model-208
-    private val modelResourceId = R.raw.broadtailmoor
-    val animationString = "Scene"
-    private val modelScale = 1.5f*/
+   // private val model = Models1.Guppie           //model-207
+
+   // private val model = Models1.Broaddtail           //model-208
 
     private val model = Models1.MrManWalking          //model-209
-    private val modelResourceId = R.raw.mrmanwalking
-    val animationString = "mixamo.com"
-    private val modelScale = 0.1f
-
-    private var startAngle=270f    // pay attention to Models1 startAngle
-
-
-    val rotatePosition = true
 
 
 
 
-    val verticalDisplacementFactor = 1.0f              //vertical
-    val horizontalDisplacementFactor = -0.7f
-    val textviewWight = 2000
-    val textviewHight = 4000
-    val fontSize=150f
 
+
+    val verticalDisplacementFactor = model.verticalViewFactor
+    val horizontalDisplacementFactor = model.horizontalViewFactor
+    val textviewWight = model.textW
+    val textviewHight = model.textH
+    val modelScale = model.scale
+    val fontSize = model.fontS
+    val fontFamily = model.fontFamily
+    val modelResourceId = model.modelResourceId
+    val animationString = model.animationString
+
+
+    lateinit var arFragment: ArFragment
+    private fun getCurrentScene() = arFragment.arSceneView.scene
+    val viewNodes = mutableListOf<Node>()
+    private var startAngle: Float = 0f
     private val nodes = mutableListOf<RotatingNode>()
     private lateinit var videoRecorder: VideoRecorder
     private var isRecording = false
-    private fun getCurrentScene() = arFragment.arSceneView.scene
-    val viewNodes = mutableListOf<Node>()
 
     var text1 = ""
     var text2 = ""
@@ -123,10 +86,10 @@ class MainActivity : AppCompatActivity() {
     var viewNode_1: Node? = null
     var viewNode_2: Node? = null
 
-    var but1_On=false
-    var but2_On=false
-    var but3_On=false
-    var but4_On=false
+    var but1_On = false
+    var but2_On = false
+    var but3_On = false
+    var but4_On = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -142,10 +105,10 @@ class MainActivity : AppCompatActivity() {
             rotateViewNodesTowardsUser()
         }
 
-        if (rotatePosition){
-            startAngle=model.startAngelRotation
-        }else{
-            startAngle=model.startAngelStatic
+        if (rotatePosition) {
+            startAngle = model.startAngelRotation
+        } else {
+            startAngle = model.startAngelStatic
         }
 
 
@@ -203,10 +166,11 @@ class MainActivity : AppCompatActivity() {
         val modelNode = Node().apply {
             renderable = modelRenewable
             localPosition = Vector3(model.radius, model.height, 0f)
-            localRotation = Quaternion.eulerAngles(Vector3(0f, model.rotationDegrees+startAngle, 0f))
-          //  if (!spaScale) {
-                localScale = Vector3(modelScale, modelScale, modelScale)
-         //   }
+            localRotation =
+                Quaternion.eulerAngles(Vector3(0f, model.rotationDegrees + startAngle, 0f))
+            //  if (!spaScale) {
+            localScale = Vector3(modelScale, modelScale, modelScale)
+            //   }
             if (rotatePosition) {
                 setParent(rotatingNode)
             } else {
@@ -235,9 +199,9 @@ class MainActivity : AppCompatActivity() {
                 box.size.y * horizontalDisplacementFactor
             )
             localRotation = Quaternion.eulerAngles(Vector3(0f, model.rotationDegrees + 90f, 0f))
-           //if (!spaScale) {
-                localScale = Vector3(modelScale, modelScale, modelScale)
-          //  }
+            //if (!spaScale) {
+            localScale = Vector3(modelScale, modelScale, modelScale)
+            //  }
             renderable = viewRenderable
         }
     }
@@ -257,13 +221,13 @@ class MainActivity : AppCompatActivity() {
         text1 = "  תגיד למה אתה מסתכל עלי כל הזמן?" +
                 "\n" + "      ובכלל איפה הכיוון של הים? " +
                 "\n" + "      ב'ואנה , אני שוחה כאן כבר חצי שעה " +
-                "\n" + "   ונראה לי שאני שוחה די במעגל כל הזמן ..."+
-                "\n"+ "\n"
+                "\n" + "   ונראה לי שאני שוחה די במעגל כל הזמן ..." +
+                "\n" + "\n"
         textView1 = createTextView(text1)
-        text2 =  "\n" +"       ומה זה כל הברדק הזה בחדר שלך ?" +
+        text2 = "\n" + "       ומה זה כל הברדק הזה בחדר שלך ?" +
                 "\n" + "     בו'אנה תן לחזור לים הגדול" +
-                "\n" + "               שם הרבה יותר נעים לי..."+
-                "\n"+ "\n"
+                "\n" + "               שם הרבה יותר נעים לי..." +
+                "\n" + "\n"
         textView2 = createTextView(text2)
     }
 
@@ -273,35 +237,35 @@ class MainActivity : AppCompatActivity() {
             setLayoutParams(ViewGroup.LayoutParams(textviewHight.toPx(), textviewWight.toPx()))
             text = text1
             setTextColor(android.graphics.Color.BLACK)
-           // setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
-            textSize=fontSize
+            // setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
+            textSize = fontSize
             gravity = Gravity.CENTER
             typeface = ResourcesCompat.getFont(
                 this@MainActivity,
-                R.font.a100_gveretlevinalefalefalef_regular
+                fontFamily
             )
         }
     }
 
     private fun setupButtons() {
         btn1.setOnClickListener {
-            if (!but1_On){
+            if (!but1_On) {
                 viewNode_1?.setParent(modelNodeGlobal)
                 viewNode_1?.let { it -> viewNodes.add(it) }
-                but1_On=true
-            }else{
+                but1_On = true
+            } else {
                 viewNode_1?.setParent(null)
-                but1_On=false
+                but1_On = false
             }
         }
         btn2.setOnClickListener {
-            if (!but2_On){
+            if (!but2_On) {
                 viewNode_2?.setParent(modelNodeGlobal)
                 viewNode_2?.let { it -> viewNodes.add(it) }
-                but2_On=true
-            }else{
+                but2_On = true
+            } else {
                 viewNode_2?.setParent(null)
-                but2_On=false
+                but2_On = false
             }
         }
     }
@@ -327,17 +291,17 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     private fun setupFab() {
         fab.setOnClickListener {
-                isRecording = videoRecorder.toggleRecordingState()
-                true
-            }
+            isRecording = videoRecorder.toggleRecordingState()
+            true
+        }
 
         fab.setOnLongClickListener {
-                if ( isRecording) {
-                    isRecording = videoRecorder.toggleRecordingState()
-                    Toast.makeText(this, "Save video to gallery ... ", Toast.LENGTH_LONG).show()
-                    true
-                } else false
-            }
+            if (isRecording) {
+                isRecording = videoRecorder.toggleRecordingState()
+                Toast.makeText(this, "Save video to gallery ... ", Toast.LENGTH_LONG).show()
+                true
+            } else false
+        }
 
     }
 
@@ -378,23 +342,23 @@ class MainActivity : AppCompatActivity() {
 
      }*/
 
-   /* @SuppressLint("ClickableViewAccessibility")
-    private fun setupFab() {
-        fab.setOnClickListener {
+    /* @SuppressLint("ClickableViewAccessibility")
+     private fun setupFab() {
+         fab.setOnClickListener {
 
-            fab.setOnLongClickListener {
-                isRecording = videoRecorder.toggleRecordingState()
-                true
-            }
-            fab.setOnTouchListener { view, motionEvent ->
-                if (motionEvent.action == MotionEvent.ACTION_UP && isRecording) {
-                    isRecording = videoRecorder.toggleRecordingState()
-                    Toast.makeText(this, "Save video to gallery ... ", Toast.LENGTH_LONG).show()
-                    true
-                } else false
-            }
-        }
-    }*/
+             fab.setOnLongClickListener {
+                 isRecording = videoRecorder.toggleRecordingState()
+                 true
+             }
+             fab.setOnTouchListener { view, motionEvent ->
+                 if (motionEvent.action == MotionEvent.ACTION_UP && isRecording) {
+                     isRecording = videoRecorder.toggleRecordingState()
+                     Toast.makeText(this, "Save video to gallery ... ", Toast.LENGTH_LONG).show()
+                     true
+                 } else false
+             }
+         }
+     }*/
 
 
     /* private fun bubbleView1(): TextView {
@@ -507,7 +471,7 @@ class MainActivity : AppCompatActivity() {
         val viewNode1=Node().apply {
             renderable=null
             val box = modelNode.renderable?.collisionShape as Box
-            localPosition = Vector3( 0f, box.size.y*verticalDisplacementFactor, box.size.y*horizontalDisplacementFactor)
+            localPosition = Vector3( 0f, box.size.y*verticalViewFactor, box.size.y*horizontalViewFactor)
             localRotation = Quaternion.eulerAngles(Vector3(0f,model.rotationDegrees+90f,0f))
             if (!spaScale){
                 localScale= Vector3(modelScale,modelScale,modelScale)

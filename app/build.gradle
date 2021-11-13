@@ -24,25 +24,23 @@ plugins {
         ['sampledata/model202/TEST2.fbx']
 )*/
 
-/*
-sceneform.asset(                                 // model-203
-        'sampledata/model203/2557eaffc6624bbe92ac201f9ba4953d.fbx.fbx',
+/*sceneform.asset(                                 // model-203
+        'sampledata/model203/Happy.fbx',
         'default',
         // 'sampledata/general/custom_material.mat',
-        'sampledata/model203/2557eaffc6624bbe92ac201f9ba4953d.fbx.sfa',
-        'src/main/res/raw/wolf',
-        ['sampledata/model203/2557eaffc6624bbe92ac201f9ba4953d.fbx.fbx']
-)
-*/
-
-/*sceneform.asset(                                 // model-204
-        'sampledata/model204/Mei_Run.fbx',
-        'default',
-        // 'sampledata/general/custom_material.mat',
-        'sampledata/model204/Mei_Run.sfa',
-        'src/main/res/raw/mei_run',
-        ['sampledata/model204/Mei_Run.fbx']
+        'sampledata/model203/Happy.sfa',
+        'src/main/res/raw/happy_baby',
+        ['sampledata/model203/Happy.fbx']
 )*/
+
+sceneform.asset(                                 // model-204
+        'sampledata/model204/Leopard Run.fbx',
+        //'default',
+        'sampledata/general/custom_material.mat',
+        'sampledata/model204/Leopard Run.sfa',
+        'src/main/res/raw/leopard_run',
+        ['sampledata/model204/Leopard Run.fbx']
+)
 
 /*sceneform.asset(                                 // model-205
         'sampledata/model205/Entry.fbx',
@@ -104,14 +102,14 @@ sceneform.asset(                                 // model-203
         ['sampledata/model208/BroadtailMoorSF.fbx']
 )*/
 
-sceneform.asset(                                 // model-209
+/*sceneform.asset(                                 // model-209
         'sampledata/model209/Mr_Man_Walking.fbx',
         // 'default',
         'sampledata/general/custom_material_para1.mat',
         'sampledata/model209/Mr_Man_Walking.sfa',
         'src/main/res/raw/mrmanwalking',
         ['sampledata/model209/Mr_Man_Walking.fbx']
-)
+)*/
 
 android {
     compileSdk 31
