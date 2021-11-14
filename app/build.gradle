@@ -11,9 +11,7 @@ plugins {
         'sampledata/model201/Sar-Fish.sfa',
         'src/main/res/raw/fish',
         ['sampledata/model201/Sar-Fish.fbx']
-
 )*/
-
 
 /*sceneform.asset(                                 // model-202
         'sampledata/model202/TEST2.fbx',
@@ -33,14 +31,14 @@ plugins {
         ['sampledata/model203/Happy.fbx']
 )*/
 
-sceneform.asset(                                 // model-204
+/*sceneform.asset(                                 // model-204
         'sampledata/model204/Leopard Run.fbx',
         //'default',
         'sampledata/general/custom_material.mat',
         'sampledata/model204/Leopard Run.sfa',
         'src/main/res/raw/leopard_run',
         ['sampledata/model204/Leopard Run.fbx']
-)
+)*/
 
 /*sceneform.asset(                                 // model-205
         'sampledata/model205/Entry.fbx',
@@ -110,6 +108,25 @@ sceneform.asset(                                 // model-204
         'src/main/res/raw/mrmanwalking',
         ['sampledata/model209/Mr_Man_Walking.fbx']
 )*/
+
+/*sceneform.asset(                                 // model-210
+        'sampledata/model210/Old Man Idle.fbx',
+     // 'default',
+       'sampledata/general/custom_material_para1.mat',
+        'sampledata/model210/Old Man Idle.sfa',
+        'src/main/res/raw/old_man',
+        ['sampledata/model210/Old Man Idle.fbx']
+)*/
+
+sceneform.asset(                                 // model-211
+        'sampledata/model211/Detective_Hands.fbx',
+     // 'default',
+      'sampledata/general/custom_material_para1.mat',
+        'sampledata/model211/Detective_Hands.sfa',
+        'src/main/res/raw/detective_hand',
+        ['sampledata/model211/Detective_Hands.fbx']
+)
+
 
 android {
     compileSdk 31

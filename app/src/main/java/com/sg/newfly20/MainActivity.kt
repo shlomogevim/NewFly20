@@ -24,8 +24,8 @@ import java.util.concurrent.CompletableFuture
 
 class MainActivity : AppCompatActivity() {
 
-   val rotatePosition = false
-   // val rotatePosition = true
+  val rotatePosition = false
+ // val rotatePosition = true
 
    // private val model = Models1.Fish               //model-201
 
@@ -49,7 +49,11 @@ class MainActivity : AppCompatActivity() {
 
    // private val model = Models1.Broaddtail           //model-208
 
-    private val model = Models1.MrManWalking          //model-209
+ //   private val model = Models1.MrManWalking          //model-209
+
+  //  private val model = Models1.Old_Man        //model-210
+
+    private val model = Models1.DEtactive_Hand        //model-211
 
 
 
