@@ -24,51 +24,47 @@ import java.util.concurrent.CompletableFuture
 
 class MainActivity : AppCompatActivity() {
 
-  val rotatePosition = false
- // val rotatePosition = true
 
-   // private val model = Models1.Fish               //model-201
+    private val rotatePosition = false
 
-   // private val model = Models1.Book           //model-202
+    private val model = Models.Fish               //model-201
 
-   // private val model = Models1.Happy_Baby       //model-203
+    // private val model = Models.Book           //model-202
 
-   //  private val model = Models1.Leopard_Run        //model-204
+    // private val model = Models.Happy_Baby       //model-203
 
-  //   private val model = Models1.Borise_Entry        //model-205
+    //  private val model = Models.Leopard_Run        //model-204
 
-  //  private val model = Models1.Borise_Samba       //model-205A
+    //   private val model = Models.Borise_Entry        //model-205
 
-   // private val model = Models1.Borise_HipHop         //model-205B
+    //  private val model = Models.Borise_Samba       //model-205A
 
-   // private val model = Models1.Borise_Swing           //model-205C
+    // private val model = Models.Borise_HipHop         //model-205B
 
-  //  private val model = Models1.DanceGirl           //model-206
+    // private val model = Models.Borise_Swing           //model-205C
 
-   // private val model = Models1.Guppie           //model-207
+    //  private val model = Models.DanceGirl           //model-206
 
-   // private val model = Models1.Broaddtail           //model-208
+    // private val model = Models.Guppie           //model-207
 
- //   private val model = Models1.MrManWalking          //model-209
+    // private val model = Models.Broaddtail           //model-208
 
-  //  private val model = Models1.Old_Man        //model-210
+    //   private val model = Models.MrManWalking          //model-209
 
-    private val model = Models1.DEtactive_Hand        //model-211
+    //  private val model = Models.Old_Man        //model-210
 
-
+    // private val model = Models.DEtactive_Hand        //model-211
 
 
-
-
-    val verticalDisplacementFactor = model.verticalViewFactor
-    val horizontalDisplacementFactor = model.horizontalViewFactor
-    val textviewWight = model.textW
-    val textviewHight = model.textH
-    val modelScale = model.scale
-    val fontSize = model.fontS
-    val fontFamily = model.fontFamily
-    val modelResourceId = model.modelResourceId
-    val animationString = model.animationString
+    private val verticalDisplacementFactor = model.verticalViewFactor
+    private val horizontalDisplacementFactor = model.horizontalViewFactor
+    private val textviewWight = model.textW
+    private val textviewHight = model.textH
+    private val modelScale = model.scale
+    private val fontSize = model.fontS
+    private val fontFamily = model.fontFamily
+    private val modelResourceId = model.modelResourceId
+    private val animationString = model.animationString
 
 
     lateinit var arFragment: ArFragment
@@ -108,13 +104,6 @@ class MainActivity : AppCompatActivity() {
         getCurrentScene().addOnUpdateListener {
             rotateViewNodesTowardsUser()
         }
-
-        if (rotatePosition) {
-            startAngle = model.startAngelRotation
-        } else {
-            startAngle = model.startAngelStatic
-        }
-
 
     }
 
@@ -166,15 +155,24 @@ class MainActivity : AppCompatActivity() {
         val rotatingNode = RotatingNode(model.degreesPerSecond).apply {
             setParent(anchorNode)
         }
+        if (rotatePosition) {
+            startAngle = model.startAngelRotation
+        } else {
+            startAngle = model.startAngelStatic
+        }
+
+        val angle = model.rotationDegrees + startAngle
 
         val modelNode = Node().apply {
             renderable = modelRenewable
             localPosition = Vector3(model.radius, model.height, 0f)
+
             localRotation =
-                Quaternion.eulerAngles(Vector3(0f, model.rotationDegrees + startAngle, 0f))
-            //  if (!spaScale) {
+                Quaternion.eulerAngles(Vector3(0f, angle, 0f))
+            //  Quaternion.eulerAngles(Vector3(0f, 180f, 0f))
+
             localScale = Vector3(modelScale, modelScale, modelScale)
-            //   }
+
             if (rotatePosition) {
                 setParent(rotatingNode)
             } else {
@@ -198,9 +196,9 @@ class MainActivity : AppCompatActivity() {
         return Node().apply {
             val box = modelNodeGlobal?.renderable?.collisionShape as Box
             localPosition = Vector3(
-                0f,
-                box.size.y * verticalDisplacementFactor,
-                box.size.y * horizontalDisplacementFactor
+                0f,1.2f,-1.5f
+              /*  box.size.y * verticalDisplacementFactor,
+                box.size.y * horizontalDisplacementFactor*/
             )
             localRotation = Quaternion.eulerAngles(Vector3(0f, model.rotationDegrees + 90f, 0f))
             //if (!spaScale) {
@@ -223,24 +221,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun getTextView() {
         text1 = "  תגיד למה אתה מסתכל עלי כל הזמן?" +
-                "\n" + "      ובכלל איפה הכיוון של הים? " +
+                "\n" + "      מה, לא ראית דג שוחה בחיים שלך... " +
                 "\n" + "      ב'ואנה , אני שוחה כאן כבר חצי שעה " +
-                "\n" + "   ונראה לי שאני שוחה די במעגל כל הזמן ..." +
+                "\n" + "   ונראה לי שאני נע כל הזמן די במעגלים ..." +
                 "\n" + "\n"
         textView1 = createTextView(text1)
-        text2 = "\n" + "       ומה זה כל הברדק הזה בחדר שלך ?" +
-                "\n" + "     בו'אנה תן לחזור לים הגדול" +
-                "\n" + "               שם הרבה יותר נעים לי..." +
+        text2 = "\n" + "       בינינו, אתה ואני די דומים " +
+                "\n" + "     שנינו כל הזמן שוחים במעגלים ..." +
+                "\n" + "               והים הגדול נמצא שם מעבר לחלון" +
+                "\n" + "             אבל אנחנו מעדיפים לנוע כאן מעגלים." +
                 "\n" + "\n"
         textView2 = createTextView(text2)
     }
 
     private fun createTextView(text1: String): TextView {
         return TextView(this).apply {
-            setBackgroundResource(R.drawable.thiking10)
+            setBackgroundResource(R.drawable.thinking10a)
             setLayoutParams(ViewGroup.LayoutParams(textviewHight.toPx(), textviewWight.toPx()))
             text = text1
-            setTextColor(android.graphics.Color.BLACK)
+            setTextColor(android.graphics.Color.WHITE)
             // setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
             textSize = fontSize
             gravity = Gravity.CENTER
